@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <style>
+              body 
+            {
+                background-image: url("login-background.png");
+                background-repeat: no-repeat;
+                background-size: 100%;
+                opacity: 0.9;
+                filter: alpha(opacity=40);
+                font-family: Arial, Helvetica, sans-serif;
+           
+            }
+            table
+            {
+                font-family: Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+                color: white;
+            }
+            #header
+            {
+                background-color: #4CAF50;
+            }
+            h2
+            {
+                color: white;
+            }
+            label
+            {
+                color:white;
+            }
+            a{
+                color:white;
+                position:absolute;
+                badding :20px;
+            }
+            </style>
+    </head>
+    <body>
+        <h2>The Office Hours Of Staff Member</h2>
+        <form action="create">
+            <label>Enter the day</label><br>
+            <input type="text" name="day"><br><br>
+            <label>Enter the time range(from/to)</label><br>
+            <input type="text" name="time"><br><br>
+            <label>Enter your available status</label><br>
+            <input type="text" name="status"><br><br>
+            <label>Enter your available location</label><br>
+            <input type="text" name="location"><br><br><br>
+            <input type="submit">
+        </form>
+        <br>
+        <form action="manage.jsp">
+            <input type="submit" value="Back">
+        </form>
+    </body>
+</html>
