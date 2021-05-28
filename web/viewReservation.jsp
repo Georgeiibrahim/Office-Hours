@@ -1,0 +1,122 @@
+<%-- 
+    Document   : viewReservation
+    Created on : Jan 15, 2021, 8:43:37 PM
+    Author     : George
+--%>
+
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+       <html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>manage-read</title>
+        <style>
+            body 
+            {
+                 background-image: url("login-background.png");
+                background-repeat: no-repeat;
+                background-size: 100%;
+                opacity: 0.9;
+                filter: alpha(opacity=40);
+                font-family: Arial, Helvetica, sans-serif;
+           
+            }
+            table
+            {
+                font-family: Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+                color: white;
+            }
+            #header
+            {
+                background-color: #4CAF50;
+            }
+            h2
+            {
+                color: white;
+            }
+            p{
+                color: white;
+            }
+            a{
+                color: white;
+            }
+        </style>
+    </head>
+     <body>
+        <h2>The Office Hours Of Staff Member</h2>
+        <% 
+            Connection Con = null;
+            Statement Stmt = null;
+            ResultSet RS = null;
+            PreparedStatement ps = null;
+            int staffID = 0 ;
+            String email = request.getSession().getAttribute("StaffEmail").toString();
+             try {
+                String url = "jdbc:mysql://localhost:3306/staff";
+                String user = "root";
+                String password = "";
+                Con = DriverManager.getConnection(url, user, password);
+                Stmt = Con.createStatement();
+                ps = Con.prepareStatement("select * from staff2 where StaffEmail=?");
+                        ps.setString(1, email);
+                        RS = ps.executeQuery();
+                        while (RS.next()) {
+                            staffID = RS.getInt("StaffID");
+                        } 
+                    ps = Con.prepareStatement("select * from officehours where staffID = ?");
+                    ps.setInt(1,staffID);
+                    RS = ps.executeQuery();
+                
+             
+          %>
+          
+           <table border="1">
+               <tr id="header">
+                <th>The ID</th> 
+                <th>Staff ID</th> 
+                <th>Day</th> 
+                <th>Time</th> 
+                <th>Status</th> 
+                <th>Location</th> 
+            </tr>
+            <%
+                while (RS.next()) {%>
+            <tr>
+                <td><%=RS.getInt("ID")%></td>
+                <td><%=RS.getInt("staffID")%></td>
+                <td><%=RS.getString("day")%></td>
+                <td><%=RS.getString("time")%></td>
+                <td><%=RS.getString("status")%></td>
+                <td><%=RS.getString("location")%></td>
+            </tr>
+            <% }
+                }catch (Exception cnfe) {
+                System.err.println("Exception: " + cnfe);
+            }
+            %>
+        </table>
+        <br>
+        <form action="viewReservation2.jsp">
+            <p>Enter the ID of Office Hours</p>
+            <input type="text" name="id">
+            <input type="submit">
+        </form>
+        <br>
+        <a href="staffhome.jsp">Back to Home Page</a>
+    </body>
+</html>
+    </body>
+</html>

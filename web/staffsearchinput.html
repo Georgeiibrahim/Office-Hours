@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Search Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+ <style>
+              body 
+            {
+                background-image: url("login-background.png");
+                background-repeat: no-repeat;
+                background-size: 100%;
+                opacity: 0.9;
+                filter: alpha(opacity=40);
+                font-family: Arial, Helvetica, sans-serif;
+           
+            }
+            table
+            {
+                font-family: Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+                color: white;
+            }
+            #header
+            {
+                background-color: #4CAF50;
+            }
+            h2
+            {
+                color: white;
+            }
+            label
+            {
+                color:white;
+            }
+            a{
+                color:white;
+                position:absolute;
+                badding :20px;
+            }
+            </style>
+</head>
+<body>
+<div class="container">
+<form class="form-inline" method="post" action="staffsearch.jsp">
+    <label>Enter Student name</label>
+<input type="text" name="staffname" class="form-control" placeholder="Search roll no..">
+<button type="submit" name="save" class="btn btn-primary">Search</button>
+</form>
+    <a href="staffhome.jsp">Back Home Page</a>
+</div>
+</body>
+</html> 
